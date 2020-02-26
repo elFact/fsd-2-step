@@ -1,13 +1,25 @@
 const path = require('path') //подключение плагина path в константу
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const PATHS = { //ввод константы PATH со значением текущей директории, нижу пример использования константы
+  src: path.join(__dirname, './src'),
+  dist: path.join(__dirname, './dist'),
+  assets: 'assets/'
+}
+
+
 module.exports = {
+
+  externals: {
+    paths: PATHS
+  },
   entry: {
-    app: './src/index.js' // точка входа в проект, файл где подключаются все библиотеки
+    app: PATHS.src // точка входа в проект, файл где подключаются все библиотеки
   },
   output: {
-    filename: '[name].js', // точка выхода, файл в который собираются библиотеки, [name] в данном случае = app
-    path: path.resolve(__dirname, './dist'), // путь использующий константу с параметрами
-    publicPath: '/dist' // путь для dev server (?)
+    filename: `${PATHS.assets}js/[name].js`, // точка выхода, файл в который собираются библиотеки, [name] в данном случае = app
+    path: PATHS.dist, // путь использующий константу с параметрами
+    publicPath: '/' // путь для dev server (?)
   },
   module: {  // плагины
     rules: [{  //правила
@@ -45,12 +57,9 @@ module.exports = {
       ]
     }]
   },
-  devServer: { //настройки плагина dev-server
-    overlay: true // показ ошибок в браузере
-  },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: `${PATHS.assets}css/[name].css`,
     })
   ]
 }
