@@ -19,7 +19,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     })
   ]
 })
-
+module.exports = { output: { publicPath: '/' }}
 module.exports = new Promise((resolve, reject) => {
   resolve(devWebpackConfig)
 })

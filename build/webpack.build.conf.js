@@ -5,6 +5,7 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   plugins: []
 })
+module.exports = { output: { publicPath: './' }}
 module.exports = new Promise((resolve, reject) => {
   resolve(buildWebpackConfig)
 })

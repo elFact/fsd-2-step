@@ -10,7 +10,6 @@ const PATHS = { //ввод константы PATH со значением те�
   assets: 'assets/'
 }
 
-
 module.exports = {
 
   externals: {
@@ -23,7 +22,6 @@ module.exports = {
   output: {
     filename: `${PATHS.assets}js/[name].[hash].js`, // точка выхода, файл в который собираются библиотеки, [name] в данном случае = app
     path: PATHS.dist, // путь использующий константу с параметрами
-    publicPath: '/' // путь для dev server (?)
   },
   optimization: {
     splitChunks: {
