@@ -17,12 +17,25 @@ module.exports = {
     paths: PATHS
   },
   entry: {
-    app: PATHS.src // точка входа в проект, файл где подключаются все библиотеки
+    app: PATHS.src ,// точка входа в проект, файл где подключаются все библиотеки
+    lk: `${PATHS.src}/lk.js`
   },
   output: {
-    filename: `${PATHS.assets}js/[name].js`, // точка выхода, файл в который собираются библиотеки, [name] в данном случае = app
+    filename: `${PATHS.assets}js/[name].[hash].js`, // точка выхода, файл в который собираются библиотеки, [name] в данном случае = app
     path: PATHS.dist, // путь использующий константу с параметрами
     publicPath: '/' // путь для dev server (?)
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          name: 'vendors',
+          test: /node_modules/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
   },
   module: {  // плагины
     rules: [{  //правила
@@ -82,7 +95,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].css`,
+      filename: `${PATHS.assets}css/[name].[hash].css`,
     }),
     new HtmlWebpackPlugin ({
       hash: false,
