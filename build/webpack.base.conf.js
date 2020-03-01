@@ -2,6 +2,7 @@ const path = require('path') //подключение плагина path в к�
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 const PATHS = { //ввод константы PATH со значением текущей директории, нижу пример использования константы
   src: path.join(__dirname, '../src'),
@@ -28,6 +29,14 @@ module.exports = {
       test: /\.js$/,  //проверка js файлов
       loader: 'babel-loader', // плагин через который идет проверка
       exclude: '/node_modules/' //исключения для проверки
+    }, {
+      test: /\.vue$/,
+      loader: 'vue-loader',
+      options: {
+        loader: {
+          scss: 'vue-style-loader!css-loader!sass-loader'
+        }
+      }
     }, {
       test: /\.(png|jpg|gif|svg)$/, 
       loader: 'file-loader',
@@ -65,7 +74,13 @@ module.exports = {
       ]
     }]
   },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.js' // присваивание ярлыку vue пути к файлу
+    }
+  },
   plugins: [
+    new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].css`,
     }),

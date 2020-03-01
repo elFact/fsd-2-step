@@ -6,4 +6,16 @@ import './scss/main.scss'
 // import 'bootstrap/dist/css/bootstrap.min.css' - для подключения какого то небольшого участка
 // import Vue from 'vue' - подключение для непосрдственного использования в этом скрипте
 // Vue.use() - пример использования
-// window.Vue = require('vue') - "подвешивание в окне" на примере vue
+window.Vue = require('vue') // - "подвешивание в окне" на примере vue
+import store from './store'
+Vue.component('example-component', require('./components/Example.vue').default)
+
+const app = new Vue({
+  data (){
+    return {
+      component: false,
+    }
+  },
+  store,
+  el: '#app'
+})

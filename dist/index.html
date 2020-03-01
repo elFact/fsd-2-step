@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/dist/app.css">
   <title>elFact</title>
-</head>
+<link href="/assets/css/app.css" rel="stylesheet"></head>
 <body>
   <div class="wrapper">
     <div id="app">
@@ -17,11 +17,10 @@
       </section>
       <section>
         <p>Секция 2</p>
-        <button @click="component = !component">Show vue</button>
       </section>
-      <example-component v-if="component"></example-component>
+      <example-component></example-component>
     </div>
   </div>
  <!-- <script src="/dist/app.js"></script> --> 
-</body>
+<script type="text/javascript" src="/assets/js/app.js"></script></body>
 </html>

@@ -1,2 +1,3 @@
 
-h1,h2,h3{color:red}.wrapper{display:-webkit-box;display:-ms-flexbox;display:flex}
+h1,h2,h3{color:red}.wrapper{display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 auto;width:400px}
+h1[data-v-220f7e6a]{color:red}
