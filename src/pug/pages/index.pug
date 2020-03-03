@@ -1,0 +1,23 @@
+extends ../layouts/main
+
+block variables
+  - var title = 'elFact'
+  - var description = 'example Webpack + Pug work'
+  - var pageClass = 'index-page'
+
+block content
+  section
+      .container
+        +item('Пример работы PUG в Webpack','Lorem ipsum dolor sit, amet consectetur adipisicing.')
+  section
+      .container
+        h1 Пример работы PUG в Webpack
+        p Lorem ipsum dolor sit, amet consectetur adipisicing.
+  example-component
+block script
+  script(type='text/javascript').
+    const foo = true;
+    let bar = function() {};
+    if (foo) {
+      bar(1 + 5)
+    }

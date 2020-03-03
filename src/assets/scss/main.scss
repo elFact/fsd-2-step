@@ -14,5 +14,21 @@ h3 {
 h2 {
   color: red;
 }
+header{
+  height: 200px;
+  background-color: grey;
+  border: 1px solid black;
+  ul{
+    display: flex;
+    & li:hover{
+      color: white;
+    }
+  }
+}
+footer{
+  height: 200px;
+  background-color: grey;
+  border: 1px solid black;
+}
 
 @import "modules/wrapper";

@@ -1,4 +1,5 @@
 const path = require('path') //подключение плагина path в константу
+const fs = require("fs")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -9,6 +10,9 @@ const PATHS = { //ввод константы PATH со значением те�
   dist: path.join(__dirname, '../dist'),
   assets: 'assets/'
 }
+// константа для HtmlWebpackPlugin
+const PAGES_DIR = `${PATHS.src}/pug/pages`
+const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
 
 module.exports = {
 
@@ -48,6 +52,9 @@ module.exports = {
           scss: 'vue-style-loader!css-loader!sass-loader'
         }
       }
+    }, {
+      test: /\.pug$/,
+      loader: 'pug-loader'
     }, {
       test: /\.(png|jpg|gif|svg)$/, 
       loader: 'file-loader',
@@ -102,15 +109,21 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].[hash].css`,
     }),
-    new HtmlWebpackPlugin ({
-      hash: false,
-      template: `${PATHS.src}/index.html`,
-      filename: './index.html'
-    }),
+    // new HtmlWebpackPlugin ({
+    //   hash: false,
+    //   template: `${PATHS.src}/index.html`,
+    //   filename: './index.html'
+    // }),
     new CopyWebpackPlugin([
       {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
       {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
       {from: `${PATHS.src}/static`, to: '' },
-    ])
+    ]),
+
+    // Авто создание других html страниц.
+    ...PAGES.map(page => new HtmlWebpackPlugin({
+      template: `${PAGES_DIR}/${page}`, // на входе .pug
+      filename: `./${page.replace(/\.pug/,'.html')}` // конвертирует в .html
+    }))
   ]
 }
