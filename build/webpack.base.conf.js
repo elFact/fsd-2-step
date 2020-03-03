@@ -55,6 +55,12 @@ module.exports = {
         name: '[name].[ext]'
       }
     }, {
+      test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/, 
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]'
+      }
+    }, {
       test: /\.scss$/,
       use: [
         'style-loader',
@@ -64,7 +70,7 @@ module.exports = {
           options: { sourceMap: true }
         }, {
           loader: "postcss-loader",
-          options: { sourceMap: true, config: {path: `${PATHS.src}/js/postcss.config.js`} }
+          options: { sourceMap: true, config: {path: `./postcss.config.js`} }
         }, {
           loader: "sass-loader",
           options: { sourceMap: true }
@@ -80,13 +86,14 @@ module.exports = {
           options: { sourceMap: true }
         }, {
           loader: "postcss-loader",
-          options: { sourceMap: true, config: {path: `${PATHS.src}/js/[name].js`} }
+          options: { sourceMap: true, config: {path: `./postcss.config.js`} }
         },
       ]
     }]
   },
   resolve: {
     alias: {
+      '~': 'src',
       'vue$': 'vue/dist/vue.js' // присваивание ярлыку vue пути к файлу
     }
   },
@@ -101,7 +108,8 @@ module.exports = {
       filename: './index.html'
     }),
     new CopyWebpackPlugin([
-      {from: `${PATHS.src}/img`, to: `${PATHS.assets}img`},
+      {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
+      {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
       {from: `${PATHS.src}/static`, to: '' },
     ])
   ]
