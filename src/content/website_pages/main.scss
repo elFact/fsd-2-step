@@ -19,6 +19,7 @@ header{
   background-color: grey;
   border: 1px solid black;
   ul{
+    justify-content: space-around;
     display: flex;
     & li:hover{
       color: white;

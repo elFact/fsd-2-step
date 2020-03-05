@@ -3,6 +3,7 @@ const fs = require("fs")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
 const PATHS = { //ввод константы PATH со значением текущей директории, нижу пример использования константы
@@ -11,8 +12,10 @@ const PATHS = { //ввод константы PATH со значением те�
   assets: 'assets/'
 }
 // константа для HtmlWebpackPlugin
-const PAGES_DIR = `${PATHS.src}/pug/pages`
+const PAGES_DIR = `${PATHS.src}/content/website_pages`
 const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
+const UI_DIR = `${PATHS.src}/content/ui-kit_pages`
+const UI = fs.readdirSync(UI_DIR).filter(fileName => fileName.endsWith('.pug'))
 
 module.exports = {
 
@@ -21,7 +24,7 @@ module.exports = {
   },
   entry: {
     app: PATHS.src ,// точка входа в проект, файл где подключаются все библиотеки
-    lk: `${PATHS.src}/lk.js`
+    lk: `${PATHS.src}/lk.js`,
   },
   output: {
     filename: `${PATHS.assets}js/[name].[hash].js`, // точка выхода, файл в который собираются библиотеки, [name] в данном случае = app
@@ -54,7 +57,7 @@ module.exports = {
       }
     }, {
       test: /\.pug$/,
-      loader: 'pug-loader'
+      loader: 'pug-loader',
     }, {
       test: /\.(png|jpg|gif|svg)$/, 
       loader: 'file-loader',
@@ -109,13 +112,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].[hash].css`,
     }),
-    // new HtmlWebpackPlugin ({
-    //   hash: false,
-    //   template: `${PATHS.src}/index.html`,
-    //   filename: './index.html'
-    // }),
     new CopyWebpackPlugin([
-      {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
+      {from: `${PATHS.src}/${PATHS.assets}images`, to: `${PATHS.assets}images`},
       {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
       {from: `${PATHS.src}/static`, to: '' },
     ]),
@@ -124,6 +122,27 @@ module.exports = {
     ...PAGES.map(page => new HtmlWebpackPlugin({
       template: `${PAGES_DIR}/${page}`, // на входе .pug
       filename: `./${page.replace(/\.pug/,'.html')}` // конвертирует в .html
-    }))
+    })),
+    ...UI.map(ui => new HtmlWebpackPlugin({
+      template: `${UI_DIR}/${ui}`, // на входе .pug
+      filename: `./ui/${ui.replace(/\.pug/,'.html')}` // конвертирует в .html
+    })),
+    new HtmlBeautifyPlugin({
+      config: {
+          html: {
+              end_with_newline: true,
+              indent_size: 2,
+              indent_with_tabs: false,
+              indent_inner_html: true,
+              preserve_newlines: true,
+              unformatted: ['p', 'i', 'b', 'span']
+          }
+      },
+      replace: [ ' type="text/javascript"' ]
+  })
+  //  new HtmlWebpackPlugin ({
+  //    template: `${PATHS.assets}/index.html`,
+  //    filename: './index.html'
+  //  })
   ]
 }

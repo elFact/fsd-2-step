@@ -1,8 +1,7 @@
 import './js/common'
-import './assets/css/main.css'
-import './assets/scss/main.scss'
+import './content/website_pages/main.scss'
 // примеры подключения библиотек
-// import 'vue' - поиск идет в начальное директории, затем в note_modules
+// import 'vue' - поиск идет в начальной директории, затем в note_modules
 // import 'bootstrap/dist/css/bootstrap.min.css' - для подключения какого то небольшого участка
 // import Vue from 'vue' - подключение для непосрдственного использования в этом скрипте
 // Vue.use() - пример использования
