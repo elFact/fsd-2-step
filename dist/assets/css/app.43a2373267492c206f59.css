@@ -1,8 +1,8 @@
 @font-face {
   font-family: Montserrat;
-  src: url(/assets/fonts/montserrat/montserrat-regular.ttf) format("truetype"),
-    url(/assets/fonts/montserrat/montserrat-regular.woff) format("woff"),
-    url(/assets/fonts/montserrat/montserrat-regular.svg) format("svg");
+  src: url(../fonts/montserrat/montserrat-regular.ttf) format("truetype"),
+    url(../fonts/montserrat/montserrat-regular.woff) format("woff"),
+    url(../fonts/montserrat/montserrat-regular.svg) format("svg");
   font-style: normal;
   font-weight: 400;
 }
@@ -16,17 +16,17 @@
 }
 @font-face {
   font-family: Quicksand;
-  src: url(/assets/fonts/quicksand/quicksand-regular.ttf) format("truetype"),
-    url(/assets/fonts/quicksand/quicksand-regular.woff) format("woff"),
-    url(/assets/fonts/quicksand/quicksand-regular.svg) format("svg");
+  src: url(../fonts/quicksand/quicksand-regular.ttf) format("truetype"),
+    url(../fonts/quicksand/quicksand-regular.woff) format("woff"),
+    url(../fonts/quicksand/quicksand-regular.svg) format("svg");
   font-style: normal;
   font-weight: 400;
 }
 @font-face {
   font-family: Quicksand;
-  src: url(/assets/fonts/quicksand/quicksand-bold.ttf) format("truetype"),
-    url(/assets/fonts/quicksand/quicksand-bold.woff) format("woff"),
-    url(/assets/fonts/quicksand/quicksand-bold.svg) format("svg");
+  src: url(../fonts/quicksand/quicksand-bold.ttf) format("truetype"),
+    url(../fonts/quicksand/quicksand-bold.woff) format("woff"),
+    url(../fonts/quicksand/quicksand-bold.svg) format("svg");
   font-style: normal;
   font-weight: 700;
 }
