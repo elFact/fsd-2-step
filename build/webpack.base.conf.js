@@ -12,7 +12,7 @@ const PATHS = { //ввод константы PATH со значением те�
   assets: 'assets/'
 }
 // константа для HtmlWebpackPlugin
-const PAGES_DIR = `${PATHS.src}/content/website_pages`
+const PAGES_DIR = `${PATHS.src}`
 const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
 const UI_DIR = `${PATHS.src}/content/ui-kit_pages`
 const UI = fs.readdirSync(UI_DIR).filter(fileName => fileName.endsWith('.pug'))
@@ -68,7 +68,9 @@ module.exports = {
       test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/, 
       loader: 'file-loader',
       options: {
-        name: '[name].[ext]'
+        name: '[name].[ext]',
+        publicPath: 'assets/fonts/montserrat',
+        publicPath: 'assets/fonts/montserrat'
       }
     }, {
       test: /\.scss$/,
@@ -77,10 +79,12 @@ module.exports = {
         MiniCssExtractPlugin.loader,
         {
           loader: "css-loader",
-          options: { sourceMap: true }
+          options: { sourceMap: true, url: false }
         }, {
           loader: "postcss-loader",
           options: { sourceMap: true, config: {path: `./postcss.config.js`} }
+        }, {
+          loader: 'resolve-url-loader',
         }, {
           loader: "sass-loader",
           options: { sourceMap: true }
@@ -93,7 +97,7 @@ module.exports = {
         MiniCssExtractPlugin.loader,
         {
           loader: "css-loader",
-          options: { sourceMap: true }
+          options: { sourceMap: true, url: true },
         }, {
           loader: "postcss-loader",
           options: { sourceMap: true, config: {path: `./postcss.config.js`} }
@@ -110,7 +114,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].[hash].css`,
+      filename: `[name].[hash].css`,
     }),
     new CopyWebpackPlugin([
       {from: `${PATHS.src}/${PATHS.assets}images`, to: `${PATHS.assets}images`},
