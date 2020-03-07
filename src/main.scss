@@ -1,10 +1,9 @@
-@import "utils/libs";
-@import "utils/vars";
-@import "utils/mixins";
-@import "utils/fonts";
+@import "content/utils/vars";
+@import "content/utils/mixins";
+@import "content/utils/fonts";
 
 h1{
-  font-family: 'Quicksan', 'Montserra';
+  font-family: 'Quicksand', 'Montserrat';
 }
 h1 {
   color: red;
@@ -33,4 +32,4 @@ footer{
   border: 1px solid black;
 }
 
-@import "modules/wrapper";
+@import "content/modules/wrapper";

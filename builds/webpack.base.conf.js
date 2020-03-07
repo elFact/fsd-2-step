@@ -14,7 +14,7 @@ const PATHS = { //ввод константы PATH со значением те�
 // константа для HtmlWebpackPlugin
 const PAGES_DIR = `${PATHS.src}`
 const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
-const UI_DIR = `${PATHS.src}/content/ui-kit_pages`
+const UI_DIR = `${PATHS.src}/content`
 const UI = fs.readdirSync(UI_DIR).filter(fileName => fileName.endsWith('.pug'))
 
 module.exports = {
@@ -68,14 +68,11 @@ module.exports = {
       test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/, 
       loader: 'file-loader',
       options: {
-        name: '[name].[ext]',
-        publicPath: 'assets/fonts/montserrat',
-        publicPath: 'assets/fonts/montserrat'
+        name: '[name].[ext]'
       }
     }, {
       test: /\.scss$/,
       use: [
-        'style-loader',
         MiniCssExtractPlugin.loader,
         {
           loader: "css-loader",
@@ -93,7 +90,6 @@ module.exports = {
     }, {
       test: /\.css$/,
       use: [
-        'style-loader',
         MiniCssExtractPlugin.loader,
         {
           loader: "css-loader",
