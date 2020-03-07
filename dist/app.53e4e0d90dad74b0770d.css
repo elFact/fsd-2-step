@@ -1,4 +1,0 @@
-@font-face{font-family:Montserrat;src:url("./assets/fonts/montserrat/montserrat-bold.ttf"),url("./assets/fonts/montserrat/montserrat-bold.svg")}@font-face{font-family:Quicksand;src:url("./assets/fonts/quicksand/quicksand-bold.ttf"),url("./assets/fonts/quicksand/quicksand-bold.svg")}h1{font-family:'Quicksan', 'Montserra'}h1{color:red}h3{color:red}h2{color:red}header{height:200px;background-color:grey;border:1px solid black}header ul{justify-content:space-around;display:flex}header ul li:hover{color:white}footer{height:200px;background-color:grey;border:1px solid black}.wrapper{display:flex;margin:0 auto;width:1440px}
-
-h1[data-v-220f7e6a]{color:red}
-
