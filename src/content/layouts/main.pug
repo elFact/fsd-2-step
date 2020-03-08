@@ -9,12 +9,6 @@ html(lang="en")
     //- примеры обращения к переменным
     title #{title}
     meta(name="description", content=description)
-    block head
-  body(class=pageClass)
+  body
     .wrapper
-      #app
-        include ../modules/header
-        .content-wrapper
-          block content
-        include ../modules/footer
-    block script
+      block content

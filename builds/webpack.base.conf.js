@@ -12,9 +12,11 @@ const PATHS = { //ввод константы PATH со значением те�
   assets: 'assets/'
 }
 // константа для HtmlWebpackPlugin
-const PAGES_DIR = `${PATHS.src}`
+const INDEX_DIR = `${PATHS.src}`
+const INDEX = fs.readdirSync(INDEX_DIR).filter(fileName => fileName.endsWith('.pug'))
+const PAGES_DIR = `${PATHS.src}/content/website-pages`
 const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
-const UI_DIR = `${PATHS.src}/content`
+const UI_DIR = `${PATHS.src}/content/ui-kit`
 const UI = fs.readdirSync(UI_DIR).filter(fileName => fileName.endsWith('.pug'))
 
 module.exports = {
@@ -119,13 +121,17 @@ module.exports = {
     ]),
 
     // Авто создание других html страниц.
-    ...PAGES.map(page => new HtmlWebpackPlugin({
-      template: `${PAGES_DIR}/${page}`, // на входе .pug
-      filename: `./${page.replace(/\.pug/,'.html')}` // конвертирует в .html
+    ...INDEX.map(index => new HtmlWebpackPlugin({
+      template: `${INDEX_DIR}/${index}`, // на входе .pug
+      filename: `./${index.replace(/\.pug/,'.html')}` // конвертирует в .html
     })),
     ...UI.map(ui => new HtmlWebpackPlugin({
       template: `${UI_DIR}/${ui}`, // на входе .pug
       filename: `./ui/${ui.replace(/\.pug/,'.html')}` // конвертирует в .html
+    })),
+    ...PAGES.map(page => new HtmlWebpackPlugin({
+      template: `${PAGES_DIR}/${page}`, // на входе .pug
+      filename: `./pages/${page.replace(/\.pug/,'.html')}` // конвертирует в .html
     })),
     new HtmlBeautifyPlugin({
       config: {

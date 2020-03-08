@@ -1,0 +1,15 @@
+extends ../layouts/main
+
+include ../modules/color-type/color-type
+
+block content
+  main.color-type-page-content
+    .color-type-container
+      +color-type('Dark Shade 100%','#1F2041')
+      +color-type('Dark Shade 75%','#1F2041')(class="color-type__item_shade75")
+      +color-type('Dark Shade 50%','#1F2041')(class="color-type__item_shade50")
+      +color-type('Dark Shade 25%','#1F2041')(class="color-type__item_shade25")
+      +color-type('Dark Shade 5%','#1F2041')(class="color-type__item_shade5")
+      +color-type('Purple','#BC9CFF')(class="color-type__item_purple")
+      +color-type('Green','#6FCF97')(class="color-type__item_green")
+    .text-type-container
