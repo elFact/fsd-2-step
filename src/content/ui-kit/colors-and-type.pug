@@ -1,8 +1,10 @@
 extends ../layouts/main
 
 include ../modules/color-type/color-type
+include ../modules/text-type/text-type
 
 block content
+  include ../modules/ui-header/ui-header
   main.color-type-page-content
     .color-type-container
       +color-type('Dark Shade 100%','#1F2041')
@@ -13,3 +15,7 @@ block content
       +color-type('Purple','#BC9CFF')(class="color-type__item_purple")
       +color-type('Green','#6FCF97')(class="color-type__item_green")
     .text-type-container
+      +text-type('H1','This one is the sub-section or widget title')(class="text-type_h1")
+      +text-type('H2','Next one is the item title inside widgets')(class="text-type_h2")
+      +text-type('H3','This is a label or CTA text')(class="text-type_h3")
+      +text-type('Body','This is the body text which is used for most of the design, like paragraphs, lists, etc.')(class="text-type_body")

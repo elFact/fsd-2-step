@@ -1,5 +1,46 @@
 .text-type-container{
   height: 321px;
   width: 403px;
-  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 3px;
+}
+.text-type{
+  display: flex;
+  &.text-type_h1{
+    font-family: $second-font;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+  }
+  &.text-type_h2{
+    font-family: $second-font;
+    font-weight: bold;
+    font-size: 1.188rem;
+    line-height: 1.5rem;
+  }
+  &.text-type_h3{
+    font-family: $main-font;
+    font-weight: bold;
+    font-size: 0.75rem;
+    line-height: 0.938rem;
+    text-transform: uppercase;
+  }
+  &.text-type_body{
+    font-family: $main-font;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    color: $dark-shade75;
+    width: 384px;
+  }
+  .text-type__name{
+    margin: 0 30px 0 0;
+    font-family: $main-font;
+    color: $dark-shade25;
+    min-width: 37px;
+    text-align: right;
+    font-weight: 400;
+  }
 }
