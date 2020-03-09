@@ -1,0 +1,48 @@
+.text-field{
+  width: 320px;
+  height: 44px;
+  padding: 13px 15px;
+  color: $dark-shade25;
+  font-family: $main-font;
+  font-size: 14px;
+  border: 1px solid $dark-shade25;
+  border-radius: 4px;
+  margin: 5px 0 0 0;
+  outline: none;
+  transition: 0.3s;
+  &::placeholder{
+    color: $dark-shade25;
+  }
+  &:hover,
+  &:focus{
+    color: $dark-shade75;
+    font-family: $main-font;
+    font-size: 14px;
+    border: 1px solid $dark-shade50;
+    transition: 0.3s;
+  }
+  &:focus::placeholder,
+  &:hover::placeholder{
+    color: $dark-shade75;
+    transition: 0.3s;
+  }
+  &::placeholder,
+  &::placeholder{
+    color: $dark-shade25;
+    transition: 0.3s;
+  }
+}
+.text-field__label{
+  font-size: 12px;
+  font-family: $main-font;
+  color: $dark-shade100;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.text-field__descr{
+  float: right;
+  font-size: 12px;
+  font-family: $main-font;
+  color: $dark-shade50;
+  text-transform: uppercase;
+}

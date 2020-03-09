@@ -1,10 +1,9 @@
-extends ../layouts/main
+extends ../layouts/ui-page
 
 include ../modules/color-type/color-type
 include ../modules/text-type/text-type
 
 block content
-  include ../modules/ui-header/ui-header
   main.color-type-page-content
     .color-type-container
       +color-type('Dark Shade 100%','#1F2041')

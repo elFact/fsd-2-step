@@ -1,0 +1,24 @@
+extends ../layouts/ui-page
+
+include ../modules/text-field/text-field
+
+block content
+  main.form-elements-page-container
+    section.text-and-button-style
+      .text-and-button-style__column-1
+        form.text-fields
+          +text-field('Email', 'Text field','Default')
+          +text-field('This is pretty awesome', 'text field','Hover / Focus')
+      .text-and-button-style__column-2
+      .text-and-button-style__column-3
+    section.dropdowns-style
+      .dropdowns-style__view-1
+      .dropdowns-style__view-2
+      .dropdowns-style__view-3
+    section.checkbox-list-style
+      .checkbox-list-style__view-1
+      .checkbox-list-style__view-2
+      .checkbox-list-style__view-3
+    section.comments-style
+      .comments-style__view-1
+      .comments-style__view-2

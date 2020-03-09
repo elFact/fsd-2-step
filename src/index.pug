@@ -1,8 +1,12 @@
-extends content/layouts/main
+extends content/layouts/ui-page
 
 block variables
   - var title = 'elFact'
   - var description = 'example Webpack + Pug work'
   - var pageClass = 'index-page'
 
-  a(href="ui/colors-and-type.html") Color and type
+  ul
+    li
+      a(href="ui/colors-and-type.html") Color & type
+    li
+      a(href="ui/form-elements.html") Form elements

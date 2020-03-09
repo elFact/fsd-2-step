@@ -41,7 +41,6 @@ p{
   width: 1440px;
   margin: 0 auto;
 }
-@import "content/ui-kit/colors-and-type";
-@import "content/modules/text-type/text-type";
 @import "content/modules/ui-header/ui-header";
-@import "content/modules/color-type/color-type";
+@import "content/ui-kit/colors-and-type";
+@import "content/ui-kit/form-elements";

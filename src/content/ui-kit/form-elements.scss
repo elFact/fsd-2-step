@@ -1,0 +1,30 @@
+.form-elements-page-container{
+  margin: 62px auto 0;
+  width: 1440px - 141px - 141px;
+}
+.text-and-button-style{
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+.text-and-button-style__column-1{
+  width: 320px;
+}
+.text-and-button-style__column-2{
+  width: 260px;
+  height: 100%;
+  background-color: red;
+}
+.text-and-button-style__column-3{
+  width: 320px;
+  height: 100%;
+  background-color: red;
+}
+.text-fields{
+  height: 67px + 87px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@import "content/modules/text-field/text-field";
