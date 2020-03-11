@@ -4,7 +4,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
 
 const PATHS = { //ввод константы PATH со значением текущей директории, нижу пример использования константы
   src: path.join(__dirname, '../src'),
@@ -26,7 +25,7 @@ module.exports = {
   },
   entry: {
     app: PATHS.src ,// точка входа в проект, файл где подключаются все библиотеки
-    lk: `${PATHS.src}/lk.js`,
+    // lk: `${PATHS.src}/component.js`,
   },
   output: {
     filename: `${PATHS.assets}js/[name].[hash].js`, // точка выхода, файл в который собираются библиотеки, [name] в данном случае = app
@@ -49,14 +48,6 @@ module.exports = {
       test: /\.js$/,  //проверка js файлов
       loader: 'babel-loader', // плагин через который идет проверка
       exclude: '/node_modules/' //исключения для проверки
-    }, {
-      test: /\.vue$/,
-      loader: 'vue-loader',
-      options: {
-        loader: {
-          scss: 'vue-style-loader!css-loader!sass-loader'
-        }
-      }
     }, {
       test: /\.pug$/,
       loader: 'pug-loader',
@@ -105,12 +96,10 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '~': 'src',
-      'vue$': 'vue/dist/vue.js' // присваивание ярлыку vue пути к файлу
+      '~': 'src',  // присваивание ярлыку ~ пути к директории
     }
   },
   plugins: [
-    new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: `[name].[hash].css`,
     }),
